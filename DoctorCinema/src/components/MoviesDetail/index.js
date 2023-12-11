@@ -1,31 +1,32 @@
 import React from "react";
 import { Text, View, TouchableOpacity, Image } from "react-native";
 import styles from "./styles";
-//import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 const MoviesDetails = ({
     id,
-    year,
     title,
-    genres,
     poster,
+    plot,
+    durationMinnutes,
+    year,
+    genres,
+    
 }) => {
-    console.log(genres.Name)
-    //const { navigate } = useNavigation();
+    const { navigate } = useNavigation();
     return (
         <TouchableOpacity
-            //onPress={() => {
-            //    navigate("CinemaInfo", {
-            //        id: id,
-            //        name: name,
-            //        address: address,
-            //        city: city,
-            //        phone: phone,
-            //        website: website,
-            //        description: description,
-            //        google_map: google_map
-            //    });
-            //}}
+            onPress={() => {
+                navigate("MovieInfo", {
+                    id: id,
+                    title: title,
+                    poster: poster,
+                    plot: plot,
+                    durationMinnutes: durationMinnutes,
+                    year: year,
+                    genres: genres,
+                });
+            }}
             >
             <View
                 style={styles.container}>
