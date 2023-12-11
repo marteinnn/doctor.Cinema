@@ -1,9 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 import styles from './styles';
+import CinemaList from '../../components/CinemaList';
 
 const Cinemas = ({ navigation: { navigate } }) => (
-    <View>
+    <View style={styles.container}>
+        <CinemaList/>
     </View>
 );
 
