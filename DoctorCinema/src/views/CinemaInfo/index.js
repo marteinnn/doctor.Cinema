@@ -9,7 +9,9 @@ const CinemaInfo = ({ route }) => {
     const { navigate } = useNavigation();
 
     const stripHtmlTags = (str) => {
+        if (str === !null) {
         return str.replace(/<[^>]*>?/gm, '');
+        }
       };
 
     return (
