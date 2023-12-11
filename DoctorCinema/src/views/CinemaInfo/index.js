@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, Image, TouchableOpacity, TouchableHighlight, Linking, Alert } from "react-native";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import MoviesList from '../../components/MoviesList';
 
 const CinemaInfo = ({ route }) => {
     const cinemaInfo = route.params;
@@ -20,6 +21,8 @@ const CinemaInfo = ({ route }) => {
                 <Text style={styles.phone}>{cinemaInfo.phone}</Text>
                 <Text style={styles.website}>{cinemaInfo.website}</Text>
             </View>
+            <MoviesList
+                cinemaId={cinemaInfo.id} />
         </View>
     );
 };
