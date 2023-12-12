@@ -11,7 +11,10 @@ const MoviesDetails = ({
     durationMinutes,
     year,
     genres,
+    trailers,
     cinemaId,
+    showtimes,
+    
 }) => {
     const { navigate } = useNavigation();
     return (
@@ -25,7 +28,11 @@ const MoviesDetails = ({
                     durationMinutes: durationMinutes,
                     year: year,
                     genres: genres,
+                    trailers: trailers,
                     cinemaId: cinemaId,
+                    showtimes: showtimes,
+                    
+
                 });
             }}
         >

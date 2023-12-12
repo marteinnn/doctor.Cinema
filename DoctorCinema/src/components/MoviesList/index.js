@@ -70,18 +70,25 @@ const MoviesList = ({ cinemaId }) => {
         return <Text>Error: {error.message}</Text>;
     }
 
-    return (
-        <View style={styles.container}>
-            <FlatList
-                numColumns={1}
-                data={data}
-                renderItem={({ item }) => (
-                    <MoviesDetails {...item} cinemaId={cinemaId} />
-                )}
-                keyExtractor={item => item.id.toString()}
-            />
-        </View>
-    );
+  if (error) {
+    return <Text>Error: {error.message}</Text>;
+  }
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+          numColumns={1}
+          data={data}
+          renderItem={({ item }) => (
+              <MoviesDetails
+                  {...item}
+                  cinemaId={cinemaId}
+              />
+          )}
+          keyExtractor={item => item.id.toString()}
+      />
+    </View>
+  );
 };
 
 export default MoviesList;
