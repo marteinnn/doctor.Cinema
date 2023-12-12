@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {
     backgroundColor: secondaryColor,
     padding: 20,
-    borderRadius: 8,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -14,8 +14,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start', // Align items to the start of the cross axis
     marginBottom: 15,
-    marginLeft: '5%',
-    width: '90%',
   },
   img: {
     width: 100,
