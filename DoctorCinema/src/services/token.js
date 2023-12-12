@@ -1,7 +1,5 @@
-// auth.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import base64 from 'react-native-base64';
-
 
 const apiBaseUrl = 'https://api.kvikmyndir.is';
 
@@ -23,6 +21,7 @@ const authenticate = async (username, password) => {
 
     const data = await response.json();
     const token = data.token;
+    console.log(token)
     await AsyncStorage.setItem('userToken', token); // Store the token for later use
   } catch (error) {
     console.error('Authentication error:', error);
@@ -32,6 +31,7 @@ const authenticate = async (username, password) => {
 const getToken = async () => {
   try {
     const token = await AsyncStorage.getItem('userToken');
+    console.log("getToken token: "+ token)
     return token;
   } catch (error) {
     console.error('Error retrieving token:', error);
@@ -64,4 +64,13 @@ const makeAuthenticatedRequest = async (endpoint) => {
   }
 };
 
-export { authenticate, getToken, makeAuthenticatedRequest };
+const clearStorage = async () => {
+  try {
+    await AsyncStorage.clear();
+    console.log('AsyncStorage has been cleared!');
+  } catch (error) {
+    console.error('Error clearing AsyncStorage:', error);
+  }
+};
+
+export { authenticate, getToken, makeAuthenticatedRequest, clearStorage };
