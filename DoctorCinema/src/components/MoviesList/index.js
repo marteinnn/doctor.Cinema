@@ -8,12 +8,14 @@ const MoviesList = ({ cinemaId }) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [token, setToken] = useState(null);
 
     const getTokenForRequest = async () => {
       try {
-        const token = await getToken();
-        if (token) {
-          return token;
+        const requestToken = await getToken();
+        if (requestToken) {
+          setToken(requestToken)
+          return
         } else {
           console.log('No token found');
         }
@@ -24,11 +26,11 @@ const MoviesList = ({ cinemaId }) => {
 
 
     useEffect(() => {
-        const requestToken = getTokenForRequest();
+        getTokenForRequest();
       
         const headers = {
           'Content-Type': 'application/json',
-          'x-access-token': requestToken
+          'x-access-token': token
         };
       
         fetch('https://api.kvikmyndir.is/movies', { method: 'GET', headers: headers })
