@@ -8,7 +8,7 @@ const MoviesDetails = ({
     title,
     poster,
     plot,
-    durationMinnutes,
+    durationMinutes,
     year,
     genres,
     
@@ -22,7 +22,7 @@ const MoviesDetails = ({
                     title: title,
                     poster: poster,
                     plot: plot,
-                    durationMinnutes: durationMinnutes,
+                    durationMinutes: durationMinutes,
                     year: year,
                     genres: genres,
                 });
