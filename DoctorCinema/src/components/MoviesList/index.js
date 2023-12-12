@@ -42,7 +42,8 @@ const MoviesList = ({ cinemaId }) => {
           return response.json();
         })
         .then((data) => {
-          setData(data);
+          const filteredData = data.filter(movie => movie.showtimes.some(showtime => showtime.cinema.id === cinemaId));
+          setData(filteredData);
           setLoading(false);
         })
         .catch((error) => {

@@ -31,14 +31,16 @@ const MoviesDetails = ({
             <View
                 style={styles.container}>
                 <Image style={styles.img} source={{uri: poster}}></Image>
-                <Text style={styles.text}>{title}</Text>
-                <Text style={styles.text}>{year}</Text>
-                <View>
-                    {genres.map((genre, index) => (
-                        <Text key={index} style={styles.genreText}>
-                            {genre.Name}
-                        </Text>
-                    ))}
+                <View style={styles.textContainer}>
+                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.year}>{year}</Text>
+                    <View>
+                        {genres.map((genre, index) => (
+                            <Text key={index} style={styles.genreText}>
+                                {genre.Name}
+                            </Text>
+                        ))}
+                    </View>
                 </View>
             </View>
         </TouchableOpacity>
