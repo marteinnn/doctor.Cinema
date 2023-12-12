@@ -22,13 +22,14 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
   name: {
+    textAlign: 'center',
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 8,
     color: '#333',
   },
   description: {
-    fontSize: 16,
+    fontSize: 12,
     marginBottom: 8,
     color: '#555',
     lineHeight: 24, // for better readability of longer descriptions
