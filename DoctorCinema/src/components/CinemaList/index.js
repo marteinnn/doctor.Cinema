@@ -2,19 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import CinemaDetails from "../CinemaDetail";
 import styles from "./styles";
+import { getToken } from '../../services/token';
 
 const CinemaList = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const getTokenForRequest = async () => {
+      try {
+        const token = await getToken();
+        if (token) {
+          return token;
+          // You now have access to the token and can use it for your requests
+        } else {
+          console.log('No token found');
+        }
+      } catch (error) {
+        console.error('Error getting token', error);
+      }
+    };
+
     useEffect(() => {
-        // Replace 'yourTokenHere' with the actual token you've retrieved from secure storage or state
-        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjY1NzZmM2IzYzQwNzkzMzZiYzAyNTI0MyIsImlhdCI6MTcwMjI5NTgzMSwiZXhwIjoxNzAyMzgyMjMxfQ.rIZnHbM_rnu04ooBCRP4jV0H50ZoR74YiPJEVH2Z4IA';
-      
+        const requestToken = getTokenForRequest();
         const headers = {
           'Content-Type': 'application/json',
-          'x-access-token': token  // Set the token in the header
+          'x-access-token': requestToken  // Set the token in the header
         };
       
         fetch('https://api.kvikmyndir.is/theaters', { method: 'GET', headers: headers })
@@ -47,7 +60,6 @@ const CinemaList = () => {
     if (error) {
       return <Text>Error: {error.message}</Text>;
     }
-    console.log(data);
     return (
       <View>
         <FlatList
