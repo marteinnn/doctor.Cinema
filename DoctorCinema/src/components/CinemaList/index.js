@@ -8,51 +8,52 @@ const CinemaList = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [token, setToken] = useState();
+    const [token, setToken] = useState(null);
+
+    const getTokenForRequest = async () => {
+      try {
+        const requestToken = await getToken();
+        if (requestToken) {
+          setToken(requestToken);
+          return;
+          // You now have access to the token and can use it for your requests
+        } else {
+          console.log('No token found');
+        }
+      } catch (error) {
+        console.error('Error getting token', error);
+      }
+    };
 
     useEffect(() => {
-      const getTokenForRequest = async () => {
-        try {
-          const requestToken = await getToken();
-          if (requestToken) {
-            setToken(requestToken); // State is updated here, but not immediately
-          } else {
-            console.log('No token found');
-          }
-        } catch (error) {
-          console.error('Error getting token', error);
-        }
-      };
-
-      getTokenForRequest();
-    }, []); // This effect runs once on mount to get the token
-
-    useEffect(() => {
-        if (token) { // This effect runs when the `token` state updates
-          console.log("token for request" + token);
-          const headers = {
-            'Content-Type': 'application/json',
-            'x-access-token': token  // The token state is now updated
-          };
-        
-          fetch('https://api.kvikmyndir.is/theaters', { method: 'GET', headers: headers })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error('Server response was not ok');
-              }
-              return response.json();
-            })
-            .then((data) => {
-              setData(data);
-              setLoading(false);
-            })
-            .catch((error) => {
-              console.error('Fetch error:', error.message);
-              setError(error);
-              setLoading(false);
-            });
-        }
-    }, [token]);
+        getTokenForRequest();
+        console.log(token);
+        const headers = {
+          'Content-Type': 'application/json',
+          'x-access-token': token  // Set the token in the header
+        };
+      
+        fetch('https://api.kvikmyndir.is/theaters', { method: 'GET', headers: headers })
+          .then((response) => {
+            if (!response.ok) {
+              // If the server response was not ok, throw an error with the status
+              throw new Error('Server response was not ok');
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // Process your data here
+            const sortedData = data.sort((a, b) => a.name.localeCompare(b.name));
+            setData(sortedData);
+            setLoading(false);
+          })
+          .catch((error) => {
+            // Handle any errors here
+            console.error('Fetch error:', error.message);
+            setError(error);
+            setLoading(false);
+          });
+      }, []); // The empty array means this effect will only run once when the component mounts
       
   
     if (loading) {
