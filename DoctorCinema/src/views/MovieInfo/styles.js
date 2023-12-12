@@ -49,30 +49,55 @@ export default StyleSheet.create({
     fontSize: 14,
     color: '#fff',
   },
-  trailer : {
-    fontSize: 14,
-    color: secondaryColor,
-    textAlign: 'center',
-    padding: 20,
-  },
   scheduleContainer: {
     marginTop: 10,
-},
+    backgroundColor: '#fff', // add a background color
+    padding: 10, // add some padding
+    borderRadius: 5, // round the corners
+  },
   scheduleTitle: {
-      fontSize: 18,
-      fontWeight: "bold",
-      marginBottom: 5,
+    fontSize: 20, // increase the font size
+    fontWeight: "bold",
+    marginBottom: 5,
+    color: mainColor, // use the main color for the title
   },
   showtime: {
-      marginBottom: 5,
+    marginBottom: 5,
+    padding: 10, // add some padding
+    backgroundColor: secondaryColor, // use the secondary color for the showtime
+    borderRadius: 5, // round the corners
   },
   time: {
-      fontSize: 16,
-      marginLeft: 10,
+    fontSize: 18, // increase the font size
+   // change the color to white
+    marginLeft: 10,
   },
   noShowtimes: {
-      fontSize: 16,
-      color: "red",
-      textAlign: "center",
+    fontSize: 16,
+    color: "red",
+    textAlign: "center",
   },
-  });
+  timeContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+
+  purchaseButton: {
+    backgroundColor: secondaryColor,
+    borderRadius: 5,
+    padding: 10,
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  purchaseButtonText: {
+      color: 'green',
+      fontSize: 16,
+      fontWeight: 'bold',
+  },
+  screen: {
+      fontSize: 16,
+      color: '#333',
+  },
+});
