@@ -1,5 +1,9 @@
-import { StyleSheet } from 'react-native';
-import { secondaryColor } from "../../styles/colors";
+import { StyleSheet, Dimensions } from 'react-native';
+import { mainColor, secondaryColor } from "../../styles/colors";
+
+// Get the window dimensions
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
     container: {
@@ -48,13 +52,56 @@ const styles = StyleSheet.create({
         flexShrink: 1,
     },
     webviewStyle: {
-        flex: 1,
-        marginTop: 20,
-        height: 300,
-        borderRadius: 5,
-        overflow: 'hidden',
-        width: '100%',
-    }
+        width: windowWidth * 0.7, // 80% of the window width
+        height: windowHeight * 0.35, // 40% of the window height
+        borderRadius: 10, // Match modal's border radius
+        overflow: 'hidden', // Hide overflow
+        //marginTop: 20, // Space from the top
+    },
+    modalView: {
+        margin: '70%',
+        backgroundColor: mainColor,
+        borderColor: 'black',
+        borderWidth: 2,
+        borderRadius: 20,
+        padding: 20,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 10,
+        elevation: 5,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        width: windowWidth * 0.8, // 80% of the window width
+        height: windowHeight * 0.4, // 40% of 
+    },
+    modalCloseButton: {
+        backgroundColor: secondaryColor,
+        borderColor: 'black',
+        borderWidth: 2,
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+        marginTop: 10,
+
+    },
+    modalCloseButtonText: {
+        color: "black",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+    },
 });
 
 export default styles;
