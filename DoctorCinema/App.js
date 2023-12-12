@@ -8,9 +8,6 @@ const App = () => {
     authenticate("marteinnn", "Fiskur121");
   }, []);
 
-  // You can now call `makeAuthenticatedRequest` wherever you need to perform an authenticated API call
-  // ...
-
   return (
     <AppContainer />
   );

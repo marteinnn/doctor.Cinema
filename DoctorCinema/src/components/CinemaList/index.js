@@ -8,12 +8,14 @@ const CinemaList = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [token, setToken] = useState(null);
 
     const getTokenForRequest = async () => {
       try {
-        const token = await getToken();
-        if (token) {
-          return token;
+        const requestToken = await getToken();
+        if (requestToken) {
+          setToken(requestToken);
+          return;
           // You now have access to the token and can use it for your requests
         } else {
           console.log('No token found');
@@ -24,10 +26,11 @@ const CinemaList = () => {
     };
 
     useEffect(() => {
-        const requestToken = getTokenForRequest();
+        getTokenForRequest();
+        console.log(token);
         const headers = {
           'Content-Type': 'application/json',
-          'x-access-token': requestToken  // Set the token in the header
+          'x-access-token': token  // Set the token in the header
         };
       
         fetch('https://api.kvikmyndir.is/theaters', { method: 'GET', headers: headers })
