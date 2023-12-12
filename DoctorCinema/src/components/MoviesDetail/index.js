@@ -11,7 +11,7 @@ const MoviesDetails = ({
     durationMinutes,
     year,
     genres,
-    
+    cinemaId,
 }) => {
     const { navigate } = useNavigation();
     return (
@@ -25,12 +25,12 @@ const MoviesDetails = ({
                     durationMinutes: durationMinutes,
                     year: year,
                     genres: genres,
+                    cinemaId: cinemaId,
                 });
             }}
-            >
-            <View
-                style={styles.container}>
-                <Image style={styles.img} source={{uri: poster}}></Image>
+        >
+            <View style={styles.container}>
+                <Image style={styles.img} source={{ uri: poster }}></Image>
                 <View style={styles.textContainer}>
                     <Text style={styles.title}>{title}</Text>
                     <Text style={styles.year}>{year}</Text>
