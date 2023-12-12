@@ -70,6 +70,7 @@ const MoviesList = ({ cinemaId }) => {
           renderItem={({ item }) => (
               <MoviesDetails
                   {...item}
+                  cinemaId={cinemaId}
               />
           )}
           keyExtractor={item => item.id.toString()}
