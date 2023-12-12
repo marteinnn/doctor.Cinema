@@ -63,39 +63,33 @@ const MovieInfo = ({ route }) => {
                     {movieInfo.genres.map(genre => genre.Name).join(", ")}
                 </Text>
                 <TouchableOpacity onPress={openTrailer}>
-                    <Text style={styles.trailer}>Watch a Trailer</Text>
+                    <Text style={styles.trailer}>Watch a Trailer (Make the trailer playable here!)</Text>
                 </TouchableOpacity>
                 {filteredShowtimes.length > 0 ? (
                     <View style={styles.scheduleContainer}>
-                        <Text style={styles.scheduleTitle}>Showtimes:</Text>
+                        <Text style={styles.scheduleTitle}>    Showtimes:</Text>
                         {filteredShowtimes.map((showtime, index) => (
                             <View key={index} style={styles.showtime}>
-                                {showtime.schedule.map((time, timeIndex) => (
-                                    <View
-                                        key={timeIndex}
-                                        style={styles.timeContainer}
-                                    >
-                                        <Text style={styles.time}>
-                                            {time.time}
-                                        </Text>
-                                        <TouchableOpacity
-                                            style={styles.purchaseButton}
-                                            onPress={() =>
-                                                Linking.openURL(
-                                                    time.purchase_url
-                                                )
-                                            }
-                                        >
-                                            <Text
-                                                style={
-                                                    styles.purchaseButtonText
-                                                }
+                                {showtime.schedule.map((time, timeIndex) => {
+                                    const [showTime, screen] = time.time.split('(');
+                                    const screenNumber = screen.replace(')', ''); // remove the closing parenthesis
+
+                                    return (
+                                        <View key={timeIndex} style={styles.timeContainer}>
+                                            <Text style={styles.time}>{showTime.trim()}</Text>
+                                            <Text style={styles.screen}>Screen: {screenNumber}</Text>
+                                            <TouchableHighlight
+                                                style={styles.purchaseButton}
+                                                underlayColor="#DDDDDD"
+                                                onPress={() => Linking.openURL(time.purchase_url)}
                                             >
-                                                Buy Tickets
-                                            </Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                ))}
+                                                <Text style={styles.purchaseButtonText}>
+                                                    Buy Tickets
+                                                </Text>
+                                            </TouchableHighlight>
+                                        </View>
+                                    );
+                                })}
                             </View>
                         ))}
                     </View>
