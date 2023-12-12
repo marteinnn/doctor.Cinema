@@ -9,7 +9,9 @@ const MovieInfo = ({ route }) => {
 
     return (
         <View style={styles.container}>
+            <Text>{movieInfo.durationMinutes}</Text>
             <Text>{movieInfo.title}</Text>
+            <Image style={styles.img} source={{uri: movieInfo.poster}}></Image>
         </View>
     );
 };
