@@ -14,7 +14,7 @@ const CinemaInfo = ({ route }) => {
 
     const [isExpanded, setIsExpanded] = useState(false);
     const cinemaInfo = route.params;
-    const shortDescription = `${stripHtmlTags(cinemaInfo.description).substring(0, 128)}...`;
+    const shortDescription = `${stripHtmlTags(cinemaInfo.description).substring(0, 0)}`;
     const { navigate } = useNavigation();
 
 
@@ -26,7 +26,7 @@ const CinemaInfo = ({ route }) => {
                     {isExpanded ? stripHtmlTags(cinemaInfo.description) : shortDescription}
                 </Text>
                 <TouchableOpacity onPress={() => setIsExpanded(!isExpanded)}>
-                    <Text style={styles.readMore}>{isExpanded ? 'Read Less' : 'Read More'}</Text>
+                    <Text style={styles.readMore}>{isExpanded ? 'Close Description' : 'Read Description'}</Text>
                 </TouchableOpacity>
                 <Text style={styles.address}>{route.params.address}, {route.params.city}</Text>
                 <Text style={styles.phone}>{cinemaInfo.phone}</Text>
