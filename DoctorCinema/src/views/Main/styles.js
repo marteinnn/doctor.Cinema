@@ -14,15 +14,27 @@ export default StyleSheet.create({
         height: 400
     },
     text: {
-        fontSize: 24,
-        color: 'white'
+        fontSize: 35,
+        color: 'white',
+        fontWeight: 'bold', // make the text bold
+        textTransform: 'uppercase', // transform the text to uppercase
+    },
+    buttonContainer: {
+        backgroundColor: secondaryColor,
+        borderRadius: 10,
+        overflow: 'hidden',
+        padding: 2,
+        margin: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     textButton: {
-        fontSize: 24,
-        color: 'black',
-        borderWidth: 2,      
-        borderColor: 'black',
-        backgroundColor: secondaryColor,
-        padding: 10           
+        fontSize: 30,
+        color: '#333', // softer color for the text
+        padding: 10,
+        textAlign: 'center',
     }
 })
