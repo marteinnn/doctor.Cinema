@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {
     backgroundColor: secondaryColor,
     padding: 20,
-    borderRadius: 8,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -14,14 +14,13 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start', // Align items to the start of the cross axis
     marginBottom: 15,
-    paddingLeft: 10,
-    width: '80%',
   },
   img: {
     width: 100,
     height: 150,
     borderRadius: 4,
     marginRight: 20,
+    
   },
   textContainer: { // New style for the text container
     flexDirection: 'column', // Stack texts vertically
@@ -31,7 +30,8 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     color: '#333',
-    marginBottom: 5, // Adds space below the title
+    marginBottom: 5,
+    flexShrink: 1, // Allows the title to shrink if the text is too long
   },
   year: {
     color: '#666',

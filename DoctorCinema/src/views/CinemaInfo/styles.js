@@ -7,7 +7,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 20,
-    backgroundColor: mainColor, // assuming a light theme
+    backgroundColor: mainColor,
   },
   infoContainer: {
     width: '90%', // container width is 90% of the screen width
@@ -23,31 +23,36 @@ export default StyleSheet.create({
   },
   name: {
     textAlign: 'center',
-    fontSize: 22,
+    fontSize: 30,
     fontWeight: 'bold',
-    marginBottom: 8,
-    color: '#333',
+    //marginBottom: 4,
+    color: 'black',
   },
   description: {
     fontSize: 12,
     marginBottom: 8,
     color: '#555',
-    lineHeight: 24, // for better readability of longer descriptions
+    lineHeight: 16, // for better readability of longer descriptions
   },
   address: {
-    fontSize: 14,
+    fontSize: 15,
     marginBottom: 4,
     color: '#777',
   },
   phone: {
-    fontSize: 14,
+    fontSize: 15,
     marginBottom: 4,
     color: '#777',
   },
   website: {
-    fontSize: 14,
+    fontSize: 15,
     color: '#0066cc',
     textDecorationLine: 'underline',
     marginBottom: 4,
   },
+  readMore: {
+    marginBottom: 4,
+    fontSize: 15,
+    color: 'blue',
+  }
 });

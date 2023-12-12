@@ -35,10 +35,9 @@ const MoviesDetails = ({
 
                 });
             }}
-            >
-            <View
-                style={styles.container}>
-                <Image style={styles.img} source={{uri: poster}}></Image>
+        >
+            <View style={styles.container}>
+                <Image style={styles.img} source={{ uri: poster }}></Image>
                 <View style={styles.textContainer}>
                     <Text style={styles.title}>{title}</Text>
                     <Text style={styles.year}>{year}</Text>

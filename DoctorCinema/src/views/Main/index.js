@@ -8,6 +8,10 @@ const Main = ({ navigation: { navigate } }) => (
         <Image style={styles.logo} source={logo} />
         <Text style={styles.text}>Doctor Cinema</Text>
         <TouchableHighlight
+            onPress={() => navigate('Upcoming')}>
+            <Text style={styles.textButton}>Upcoming Movie's</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
             onPress={() => navigate('Cinemas')}>
             <Text style={styles.textButton}>Cinema's</Text>
         </TouchableHighlight>
