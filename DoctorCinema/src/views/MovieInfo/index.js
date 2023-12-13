@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
     Text,
     ScrollView,
@@ -6,8 +6,7 @@ import {
     TouchableOpacity,
     TouchableHighlight,
     Linking,
-    Alert,
-    View,
+    View
 } from "react-native";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
@@ -31,22 +30,7 @@ const MovieInfo = ({ route }) => {
           )
         : [];
 
-    const openTrailer = () => {
-        console.log(movieInfo);
-        if (
-            movieInfo.trailers &&
-            movieInfo.trailers.length > 0 &&
-            movieInfo.trailers[0].results &&
-            movieInfo.trailers[0].results.length > 0
-        ) {
-            const trailerUrl = movieInfo.trailers[0].results[0].url;
-            console.log(trailerUrl);
-            Linking.openURL(trailerUrl);
-        }
-    };
-
     return (
-        //Name, Image, Plot, Duration, Year of release, Genres
         <View style={styles.container}>
             <ScrollView style={styles.infoContainer}>
                 <Text style={styles.title}>{movieInfo.title}</Text>
@@ -62,9 +46,6 @@ const MovieInfo = ({ route }) => {
                     Genres:{" "}
                     {movieInfo.genres.map(genre => genre.Name).join(", ")}
                 </Text>
-                <TouchableOpacity onPress={openTrailer}>
-                    <Text style={styles.trailer}>Watch a Trailer (Make the trailer playable here!)</Text>
-                </TouchableOpacity>
                 {filteredShowtimes.length > 0 ? (
                     <View style={styles.scheduleContainer}>
                         <Text style={styles.scheduleTitle}>    Showtimes:</Text>
@@ -101,6 +82,5 @@ const MovieInfo = ({ route }) => {
             </ScrollView>
         </View>
     );
-};
-
+}
 export default MovieInfo;
