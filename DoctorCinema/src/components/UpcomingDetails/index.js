@@ -7,7 +7,7 @@ const UpcomingDetails = ({
     title,
     poster,
     trailers,
-    releaseDate,
+    "release-dateIS": releaseDate, // rename "release-dateIS" to releaseDate
 }) => {
     const [selectedTrailerUrl, setSelectedTrailerUrl] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
@@ -18,12 +18,15 @@ const UpcomingDetails = ({
         setModalVisible(true);
     };
 
+    const date = new Date(releaseDate);
+    const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
     return (
         <View style={styles.container}>
             <Image style={styles.img} source={{ uri: poster }} />
             <View style={styles.textContainer}>
                 <Text style={styles.title}>{title}</Text>
-                <Text style={styles.releaseDate}>{releaseDate}</Text>
+                <Text style={styles.releaseDate}>Date of release: {formattedDate}</Text>
                 {hasTrailers && (
                     <View>
                         {trailers[0].results.map((trailer, index) => (
