@@ -17,7 +17,6 @@ export default StyleSheet.create({
         fontSize: 35,
         color: 'white',
         fontWeight: 'bold', // make the text bold
-        textTransform: 'uppercase', // transform the text to uppercase
     },
     buttonContainer: {
         backgroundColor: secondaryColor,
