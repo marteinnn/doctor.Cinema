@@ -16,7 +16,6 @@ const CinemaList = () => {
             if (requestToken) {
                 setToken(requestToken);
                 return;
-                // You now have access to the token and can use it for your requests
             } else {
                 console.log("No token found");
             }
@@ -30,7 +29,7 @@ const CinemaList = () => {
         console.log(token);
         const headers = {
             "Content-Type": "application/json",
-            "x-access-token": token, // Set the token in the header
+            "x-access-token": token,
         };
 
         fetch("https://api.kvikmyndir.is/theaters", {

@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 const CinemaDetails = ({
     id,
     name,
-    "address\t": address, // Destructure "address\t" and rename it to "address"
+    "address\t": address,
     city,
     phone,
     website,
@@ -25,12 +25,11 @@ const CinemaDetails = ({
                     phone: phone,
                     website: website,
                     description: description,
-                    google_map: google_map
+                    google_map: google_map,
                 });
             }}
-            >
-            <View
-                style={styles.container}>
+        >
+            <View style={styles.container}>
                 <Text style={styles.text}>{name}</Text>
                 <Text style={styles.text}>{website}</Text>
             </View>

@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     TouchableHighlight,
     Linking,
-    View
+    View,
 } from "react-native";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
@@ -48,23 +48,42 @@ const MovieInfo = ({ route }) => {
                 </Text>
                 {filteredShowtimes.length > 0 ? (
                     <View style={styles.scheduleContainer}>
-                        <Text style={styles.scheduleTitle}>    Showtimes:</Text>
+                        <Text style={styles.scheduleTitle}> Showtimes:</Text>
                         {filteredShowtimes.map((showtime, index) => (
                             <View key={index} style={styles.showtime}>
                                 {showtime.schedule.map((time, timeIndex) => {
-                                    const [showTime, screen] = time.time.split('(');
-                                    const screenNumber = screen.replace(')', ''); // remove the closing parenthesis
+                                    const [showTime, screen] =
+                                        time.time.split("(");
+                                    const screenNumber = screen.replace(
+                                        ")",
+                                        ""
+                                    );
 
                                     return (
-                                        <View key={timeIndex} style={styles.timeContainer}>
-                                            <Text style={styles.time}>{showTime.trim()}</Text>
-                                            <Text style={styles.screen}>Screen: {screenNumber}</Text>
+                                        <View
+                                            key={timeIndex}
+                                            style={styles.timeContainer}
+                                        >
+                                            <Text style={styles.time}>
+                                                {showTime.trim()}
+                                            </Text>
+                                            <Text style={styles.screen}>
+                                                Screen: {screenNumber}
+                                            </Text>
                                             <TouchableHighlight
                                                 style={styles.purchaseButton}
                                                 underlayColor="#DDDDDD"
-                                                onPress={() => Linking.openURL(time.purchase_url)}
+                                                onPress={() =>
+                                                    Linking.openURL(
+                                                        time.purchase_url
+                                                    )
+                                                }
                                             >
-                                                <Text style={styles.purchaseButtonText}>
+                                                <Text
+                                                    style={
+                                                        styles.purchaseButtonText
+                                                    }
+                                                >
                                                     Buy Tickets
                                                 </Text>
                                             </TouchableHighlight>
@@ -82,5 +101,5 @@ const MovieInfo = ({ route }) => {
             </ScrollView>
         </View>
     );
-}
+};
 export default MovieInfo;
